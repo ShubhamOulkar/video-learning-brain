@@ -4,7 +4,6 @@
 .prod.env
 cognee/.data/
 Video embedding
-cognee/alembic
 
 code_pipeline_output*/
 
