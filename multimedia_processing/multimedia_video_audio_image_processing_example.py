@@ -15,13 +15,15 @@ async def main():
     await cognee.forget(everything=True)
 
     # cognee knowledge graph will be created based on the text and description of these files
-    mp3_file_path = os.path.join( pathlib.Path(__file__).parent, "data/text_to_speech.mp3" )
-    png_file_path = os.path.join( pathlib.Path(__file__).parent, "data/example.png" )
+    mp3_file_path = os.path.join(pathlib.Path(__file__).parent, "data/text_to_speech.mp3")
+    png_file_path = os.path.join(pathlib.Path(__file__).parent, "data/example.png")
     video_file_path = os.path.join(pathlib.Path(__file__).parent, "data/news.mp4")
 
     # Remember the files and create knowledge graph memory
     await cognee.remember(
-        [mp3_file_path, png_file_path, video_file_path], dataset_name="multimedia_processing", self_improvement=False
+        [mp3_file_path, png_file_path, video_file_path],
+        dataset_name="multimedia_processing",
+        self_improvement=False,
     )
 
     # Query cognee for summaries of the data in the multimedia files

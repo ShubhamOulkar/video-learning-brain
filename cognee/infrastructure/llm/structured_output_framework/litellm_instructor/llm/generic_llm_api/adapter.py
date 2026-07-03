@@ -1,5 +1,6 @@
 """Adapter for Generic API LLM provider API"""
 
+import os
 import base64
 import logging
 import mimetypes
@@ -397,17 +398,6 @@ class GenericAPIAdapter(LLMInterface):
         - Timestamped descriptions of significant visual scenes.
         - Important on-screen text.
         - A concise summary of the video.
-
-        Parameters
-        ----------
-        input:
-            Path to the video file.
-
-        Returns
-        -------
-        TranscriptionReturnType containing:
-            - text: Generated textual representation.
-            - payload: Raw provider response.
         """
 
         async with open_data_file(input, mode="rb") as video_file:
@@ -418,21 +408,26 @@ class GenericAPIAdapter(LLMInterface):
         if not mime_type or not mime_type.startswith("video/"):
             raise ValueError(f"Could not determine MIME type for video file: {input}.")
 
-        prompt = """
-            Analyze this video and generate a textual representation suitable for
-            knowledge ingestion.
+        video_name = video_name = os.path.basename(input)
 
-            Include:
+        prompt = f"""
+            Analyze the attached video and generate a textual representation suitable for knowledge ingestion.
 
-            1. Timestamped spoken dialogue.
-            2. Timestamped descriptions of significant visual scenes.
-            3. Important on-screen text.
-            4. A concise summary of the overall video.
+            Video filename: {video_name}
+
+            Produce a single chronological document.
+
+            For each timestamp include:
+            - Spoken dialogue.
+            - Visual events occurring at that time.
+            - Important on-screen text, when present.
 
             Requirements:
-            - Keep timestamps in chronological order.
-            - Describe only what is visible or audible.
-            - Do not infer facts that are not present.
+            - Merge audio and visual observations into one chronological timeline.
+            - Keep timestamps in ascending order.
+            - Describe only what is directly observable.
+            - Do not infer information that is not shown or spoken.
+            - Finish with a concise summary.
             - Return plain text only.
             """
 
@@ -469,7 +464,11 @@ class GenericAPIAdapter(LLMInterface):
         ):
             return None
 
+        text = (
+            f"Video: {video_name}\nMedia Type: {mime_type}\n\n{response.choices[0].message.content}"
+        )
+
         return TranscriptionReturnType(
-            text=response.choices[0].message.content,
+            text=text,
             payload=response,
         )
