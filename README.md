@@ -83,25 +83,6 @@ if __name__ == '__main__':
 
 ```
 
-### Use the Cognee CLI
-
-```bash
-cognee-cli remember "Cognee turns documents into AI memory."
-
-cognee-cli recall "What does Cognee do?"
-
-cognee-cli forget --all
-```
-
-To open the local UI, run:
-```bash
-cognee-cli -ui
-```
-
-> **Note:** The MCP server launched by `cognee-cli -ui` runs inside a Docker container.
-> Docker Desktop or any OCI-compatible runtime with a working `docker` CLI is
-> required.
-
 ## Run with Docker
 
 Prefer containers? Cognee publishes prebuilt images to Docker Hub on every push to `main`:
