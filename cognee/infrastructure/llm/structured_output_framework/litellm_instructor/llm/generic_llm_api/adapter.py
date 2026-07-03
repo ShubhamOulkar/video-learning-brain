@@ -374,3 +374,104 @@ class GenericAPIAdapter(LLMInterface):
             max_retries=self.MAX_RETRIES,
         )
         return response
+
+    @observe(as_type="transcribe_video")
+    @retry(
+        stop=stop_after_attempt(3),
+        wait=wait_exponential_jitter(2, 128),
+        retry=retry_if_not_exception_type(
+            (
+                litellm.exceptions.NotFoundError,
+                litellm.exceptions.AuthenticationError,
+            )
+        ),
+        before_sleep=before_sleep_log(logger, logging.WARNING),
+        reraise=True,
+    )
+    async def transcribe_video(self, input: str) -> TranscriptionReturnType | None:
+        """
+        Generate a textual representation of a video.
+
+        The returned text is intended for knowledge ingestion and may include:
+        - Timestamped spoken dialogue.
+        - Timestamped descriptions of significant visual scenes.
+        - Important on-screen text.
+        - A concise summary of the video.
+
+        Parameters
+        ----------
+        input:
+            Path to the video file.
+
+        Returns
+        -------
+        TranscriptionReturnType containing:
+            - text: Generated textual representation of the video.
+            - payload: Raw provider response.
+        """
+
+        async with open_data_file(input, mode="rb") as video_file:
+            # This API only supported by "gemini/**" models
+            file_handle = litellm.create_file(
+                file=video_file,
+                purpose="assistants",
+                api_key=self.api_key,
+                extra_headers={"custom-llm-provider": "gemini"},
+            )
+
+        mime_type, _ = mimetypes.guess_type(input)
+
+        if not mime_type or not mime_type.startswith("video/"):
+            raise ValueError(
+                f"Could not determine MIME type for video file: {input}. Is the extension correct?"
+            )
+
+        prompt = """
+            Analyze this video and generate a textual representation suitable for
+            knowledge ingestion.
+
+            Include:
+            1. Timestamped spoken dialogue.
+            2. Timestamped descriptions of significant visual scenes.
+            3. Important on-screen text, if present.
+            4. A concise summary of the overall video.
+
+            Maintain chronological order.
+            Return plain text only.
+            """
+
+        response = await litellm.acompletion(
+            model=self.model,
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": prompt,
+                        },
+                        {
+                            "type": "file",
+                            "file": {
+                                "file_id": file_handle.id,
+                                "filename": input,
+                                "format": mime_type,
+                            },
+                        },
+                    ],
+                }
+            ],
+            api_key=self.api_key,
+            api_base=self.endpoint,
+            api_version=self.api_version,
+            max_completion_tokens=self.max_completion_tokens,
+            max_retries=self.MAX_RETRIES,
+        )
+
+        if not response.choices or response.choices[0].message is None:
+            return None
+
+        return TranscriptionReturnType(
+            text=response.choices[0].message.content or "",
+            payload=response,
+        )
