@@ -81,3 +81,32 @@ class LLMInterface(ABC):
               BaseModel.
         """
         ...
+
+    @abstractmethod
+    async def transcribe_video(self, input: str) -> TranscriptionReturnType | None:
+        """
+        Generate a textual representation of a video.
+
+        This method processes the specified video file using a multimodal
+        language model and returns a textual representation suitable for
+        ingestion into Cognee.
+
+        The generated text should capture the information contained in the
+        video in a structured, human-readable form. This may include:
+
+        - Timestamped spoken dialogue or narration.
+        - Timestamped descriptions of significant visual scenes or events.
+        - Visible on-screen text when available.
+        - A concise summary of the video's overall content.
+
+        Parameters:
+        -----------
+            input: The path to the video file to process.
+
+        Returns:
+        --------
+            A TranscriptionReturnType containing:
+            - text: The generated textual representation of the video.
+            - payload: The raw provider response.
+        """
+        ...
