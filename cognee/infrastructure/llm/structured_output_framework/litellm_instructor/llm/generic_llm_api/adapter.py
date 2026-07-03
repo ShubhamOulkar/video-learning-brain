@@ -392,7 +392,7 @@ class GenericAPIAdapter(LLMInterface):
         """
         Generate a textual representation of a video.
 
-        The returned text is intended for knowledge ingestion and may include:
+        The returned text is intended for knowledge ingestion and includes:
         - Timestamped spoken dialogue.
         - Timestamped descriptions of significant visual scenes.
         - Important on-screen text.
@@ -406,38 +406,34 @@ class GenericAPIAdapter(LLMInterface):
         Returns
         -------
         TranscriptionReturnType containing:
-            - text: Generated textual representation of the video.
+            - text: Generated textual representation.
             - payload: Raw provider response.
         """
 
         async with open_data_file(input, mode="rb") as video_file:
-            # This API only supported by "gemini/**" models
-            file_handle = litellm.create_file(
-                file=video_file,
-                purpose="assistants",
-                api_key=self.api_key,
-                extra_headers={"custom-llm-provider": "gemini"},
-            )
+            encoded_video = base64.b64encode(video_file.read()).decode("utf-8")
 
         mime_type, _ = mimetypes.guess_type(input)
 
         if not mime_type or not mime_type.startswith("video/"):
-            raise ValueError(
-                f"Could not determine MIME type for video file: {input}. Is the extension correct?"
-            )
+            raise ValueError(f"Could not determine MIME type for video file: {input}.")
 
         prompt = """
             Analyze this video and generate a textual representation suitable for
             knowledge ingestion.
 
             Include:
+
             1. Timestamped spoken dialogue.
             2. Timestamped descriptions of significant visual scenes.
-            3. Important on-screen text, if present.
+            3. Important on-screen text.
             4. A concise summary of the overall video.
 
-            Maintain chronological order.
-            Return plain text only.
+            Requirements:
+            - Keep timestamps in chronological order.
+            - Describe only what is visible or audible.
+            - Do not infer facts that are not present.
+            - Return plain text only.
             """
 
         response = await litellm.acompletion(
@@ -453,9 +449,7 @@ class GenericAPIAdapter(LLMInterface):
                         {
                             "type": "file",
                             "file": {
-                                "file_id": file_handle.id,
-                                "filename": input,
-                                "format": mime_type,
+                                "file_data": f"data:{mime_type};base64,{encoded_video}",
                             },
                         },
                     ],
@@ -468,10 +462,14 @@ class GenericAPIAdapter(LLMInterface):
             max_retries=self.MAX_RETRIES,
         )
 
-        if not response.choices or response.choices[0].message is None:
+        if (
+            not response.choices
+            or response.choices[0].message is None
+            or response.choices[0].message.content is None
+        ):
             return None
 
         return TranscriptionReturnType(
-            text=response.choices[0].message.content or "",
+            text=response.choices[0].message.content,
             payload=response,
         )

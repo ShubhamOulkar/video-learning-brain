@@ -1,6 +1,6 @@
 # Self video learning brain
 
-> NOTE: This project is built upon fork from https://github.com/topoteretes/cognee
+> NOTE: This project is built from copy of fork https://github.com/topoteretes/cognee
 
 ## Development Setup
 
@@ -62,3 +62,9 @@ pnpm dev
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:8000
 - **API Docs**: http://localhost:8000/docs (Swagger UI)
+
+> Note: The current video ingestion implementation now sends video content as
+**Base64** data URIs instead of using LiteLLM's create_file API. This
+matches the existing audio/image infrastructure, works across more
+providers, and provides a simpler baseline for validating multimodal
+video ingestion before introducing provider-specific file upload APIs.
