@@ -14,11 +14,12 @@ headers = {
     "Content-Type": "application/json",
 }
 
-
 async def main():
     # cognee cloud can not load data return from LLM provider, it only passes path strings to cloud.
     # see cognee-cloud-bug.png
-    # await cognee.serve()
+    # await cognee.serve(url="http://localhost:8000", api_key="9fde6c6f68487f568cce2b5b71dab7d698a8dfeff50002983ee0268d3a7ca977")
+    # tested with local server, verify bug folder
+    
     await cognee.prune.prune_data()
     await cognee.prune.prune_system(metadata=True)
     await cognee.forget(everything=True)
@@ -30,7 +31,7 @@ async def main():
 
     # Remember the files and create knowledge graph memory
     remeber_results = await cognee.remember(
-        [mp3_file_path, png_file_path, video_file_path],
+        [mp3_file_path, video_file_path, png_file_path],
         dataset_name="multimedia_processing",
         self_improvement=False,
     )
@@ -44,7 +45,7 @@ async def main():
 
     # Display search results
     for result_text in search_results:
-        print(result_text.text)  # type: ignore
+        print(result_text)  # type: ignore
         print()
 
     # visualise locally
@@ -54,7 +55,7 @@ async def main():
 
     await visualize_graph(visualize_graph_path, dataset="multimedia_processing")
 
-    # await cognee.disconnect()
+    await cognee.disconnect()
 
     # sync local dataset to cognee cloud
     # payload = {"datasetIds": [remeber_results.dataset_id]}
