@@ -1,0 +1,110 @@
+[
+  {
+    "id": "F1",
+    "category": "Factual Retrieval",
+    "query": "What is this video about?",
+    "reference_answer": "The video reports on the East Palestine, Ohio train derailment and its environmental impacts."
+  },
+  {
+    "id": "F2",
+    "category": "Factual Retrieval",
+    "query": "Why were residents told to drink bottled water?",
+    "reference_answer": "Residents were advised to drink bottled water while authorities investigated possible environmental contamination after the train derailment."
+  },
+  {
+    "id": "T1",
+    "category": "Timestamp Retrieval",
+    "query": "When does the aerial footage of the train derailment first appear?",
+    "reference_answer": "The aerial footage first appears around 00:10."
+  },
+  {
+    "id": "T2",
+    "category": "Timestamp Retrieval",
+    "query": "When does Jarred Hill begin speaking?",
+    "reference_answer": "Jarred Hill begins speaking around 00:30."
+  },
+  {
+    "id": "V1",
+    "category": "Visual Retrieval",
+    "query": "Describe the train derailment scene.",
+    "reference_answer": "The video shows aerial footage of the derailed train with heavy black smoke, fire, and emergency response activity."
+  },
+  {
+    "id": "V2",
+    "category": "Visual Retrieval",
+    "query": "What appears on screen around 00:30?",
+    "reference_answer": "Jarred Hill appears speaking from the newsroom while discussing the health concerns related to the derailment."
+  },
+  {
+    "id": "OCR1",
+    "category": "OCR",
+    "query": "What headline appears on screen?",
+    "reference_answer": "The headline shown is 'Toxic train fallout'."
+  },
+  {
+    "id": "OCR2",
+    "category": "OCR",
+    "query": "Which broadcaster produced this report?",
+    "reference_answer": "The report is from BBC."
+  },
+  {
+    "id": "A1",
+    "category": "Audio Retrieval",
+    "query": "What did the correspondent say about vinyl chloride?",
+    "reference_answer": "The correspondent explained that vinyl chloride is used to make plastics, is a known carcinogen, and officials continue monitoring for its effects."
+  },
+  {
+    "id": "A2",
+    "category": "Audio Retrieval",
+    "query": "Why are residents worried?",
+    "reference_answer": "Residents are worried about possible health effects caused by exposure to hazardous chemicals released after the derailment."
+  },
+  {
+    "id": "M1",
+    "category": "Multimodal",
+    "query": "What is shown while Jarred Hill speaks?",
+    "reference_answer": "Jarred Hill speaks while footage of the train derailment is shown, including split-screen views of the crash site."
+  },
+  {
+    "id": "M2",
+    "category": "Multimodal",
+    "query": "Describe both the narration and visuals around 00:45.",
+    "reference_answer": "The narration discusses vinyl chloride and potential health risks while visuals show the derailment in a split-screen alongside the correspondent."
+  },
+  {
+    "id": "KG1",
+    "category": "Knowledge Graph",
+    "query": "Which chemical is linked to cancer?",
+    "reference_answer": "Vinyl chloride is identified as the chemical linked to cancer."
+  },
+  {
+    "id": "KG2",
+    "category": "Knowledge Graph",
+    "query": "Who warned residents to drink bottled water?",
+    "reference_answer": "Ohio Governor Mike DeWine warned residents to drink bottled water."
+  },
+  {
+    "id": "R1",
+    "category": "Reasoning",
+    "query": "Why are officials monitoring the area if the air is considered safe?",
+    "reference_answer": "Officials continue monitoring because the long-term environmental and health impacts remain uncertain despite current air quality measurements."
+  },
+  {
+    "id": "R2",
+    "category": "Reasoning",
+    "query": "Explain the relationship between the derailment and the fish deaths.",
+    "reference_answer": "The derailment released hazardous chemicals into the environment, which are believed to have contaminated nearby waterways and contributed to fish deaths."
+  },
+  {
+    "id": "S1",
+    "category": "Semantic Search",
+    "query": "Which hazardous material is discussed?",
+    "reference_answer": "The hazardous material discussed is vinyl chloride."
+  },
+  {
+    "id": "S2",
+    "category": "Semantic Search",
+    "query": "What safety advice was given to residents?",
+    "reference_answer": "Residents were advised to drink bottled water until authorities completed their environmental investigation."
+  }
+]

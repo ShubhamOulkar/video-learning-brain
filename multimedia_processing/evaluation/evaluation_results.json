@@ -1,0 +1,62 @@
+[
+  {
+    "id": "F1",
+    "category": "Factual Retrieval",
+    "query": "What is this video about?",
+    "reference_answer": "The video reports on the East Palestine, Ohio train derailment and its environmental impacts.",
+    "retrieved_answer": "The video reports on the aftermath of a toxic train derailment in East Palestine, Ohio, covering environmental concerns, the warning for residents to drink bottled water, and potential health risks from chemicals like vinyl chloride.",
+    "score": 10,
+    "passed": true,
+    "reasoning": "The retrieved answer correctly identifies the core subject of the video (the East Palestine train derailment and environmental impacts) while providing additional accurate details that are consistent with the topic."
+  },
+  {
+    "id": "F2",
+    "category": "Factual Retrieval",
+    "query": "Why were residents told to drink bottled water?",
+    "reference_answer": "Residents were advised to drink bottled water while authorities investigated possible environmental contamination after the train derailment.",
+    "retrieved_answer": "Residents were advised to drink bottled water while authorities investigate the environmental fallout and potential contamination following the derailment of a train carrying toxic chemicals, including the known carcinogen vinyl chloride.",
+    "score": 10,
+    "passed": true,
+    "reasoning": "The retrieved answer correctly identifies the reason for the bottled water advisory (environmental contamination from a train derailment). It provides the same core information as the reference answer while adding relevant context about the chemicals involved."
+  },
+  {
+    "id": "T1",
+    "category": "Timestamp Retrieval",
+    "query": "When does the aerial footage of the train derailment first appear?",
+    "reference_answer": "The aerial footage first appears around 00:10.",
+    "retrieved_answer": "The aerial footage of the train derailment first appears at 00:10.",
+    "score": 10,
+    "passed": true,
+    "reasoning": "The retrieved answer accurately identifies the timestamp requested in the reference answer."
+  },
+  {
+    "id": "T2",
+    "category": "Timestamp Retrieval",
+    "query": "When does Jarred Hill begin speaking?",
+    "reference_answer": "Jarred Hill begins speaking around 00:30.",
+    "retrieved_answer": "Jarred Hill begins speaking at 00:30.",
+    "score": 10,
+    "passed": true,
+    "reasoning": "The retrieved answer is semantically identical to the reference answer and provides the correct timestamp."
+  },
+  {
+    "id": "V1",
+    "category": "Visual Retrieval",
+    "query": "Describe the train derailment scene.",
+    "reference_answer": "The video shows aerial footage of the derailed train with heavy black smoke, fire, and emergency response activity.",
+    "retrieved_answer": "The derailment scene features a cargo train that crashed, resulting in a major fire and the release of heavy black smoke.",
+    "score": 9,
+    "passed": true,
+    "reasoning": "The retrieved answer accurately describes the scene including the fire and smoke. It omits the detail about 'aerial footage' and 'emergency response activity' but remains factually correct and aligned with the reference."
+  },
+  {
+    "id": "V2",
+    "category": "Visual Retrieval",
+    "query": "What appears on screen around 00:30?",
+    "reference_answer": "Jarred Hill appears speaking from the newsroom while discussing the health concerns related to the derailment.",
+    "retrieved_answer": "At 00:30, CBS News correspondent Jarred Hill appears on screen speaking from the newsroom, accompanied by on-screen text identifying him and noting that hundreds of angry residents gathered to demand health assurances.",
+    "score": 10,
+    "passed": true,
+    "reasoning": "The retrieved answer accurately identifies the person and setting mentioned in the reference answer and provides relevant additional detail about the on-screen text."
+  }
+]
