@@ -391,13 +391,33 @@ class GenericAPIAdapter(LLMInterface):
     )
     async def transcribe_video(self, input: str) -> TranscriptionReturnType | None:
         """
-        Generate a textual representation of a video.
+        Generate a textual representation of a video suitable for knowledge ingestion.
 
-        The returned text is intended for knowledge ingestion and includes:
+        The video is processed by a multimodal language model and converted into a
+        chronological text document that combines the video's audio and visual
+        content. The generated representation may include:
+
         - Timestamped spoken dialogue.
-        - Timestamped descriptions of significant visual scenes.
+        - Timestamped descriptions of significant visual events.
         - Important on-screen text.
-        - A concise summary of the video.
+        - A concise summary of the overall video.
+
+        Parameters
+        ----------
+        input:
+            Path to the video file to process.
+
+        Returns
+        -------
+        TranscriptionReturnType | None
+            A textual representation of the video together with the raw provider
+            response. Returns ``None`` if no transcription could be generated.
+
+        Raises
+        ------
+        ValueError
+            If the input file is not a supported video format or its MIME type
+            cannot be determined.
         """
 
         async with open_data_file(input, mode="rb") as video_file:
@@ -408,27 +428,63 @@ class GenericAPIAdapter(LLMInterface):
         if not mime_type or not mime_type.startswith("video/"):
             raise ValueError(f"Could not determine MIME type for video file: {input}.")
 
-        video_name = video_name = os.path.basename(input)
+        video_name = os.path.basename(input)
 
         prompt = f"""
             Analyze the attached video and generate a textual representation suitable for knowledge ingestion.
 
             Video filename: {video_name}
 
-            Produce a single chronological document.
+            Produce a single chronological timeline of the video.
 
-            For each timestamp include:
-            - Spoken dialogue.
-            - Visual events occurring at that time.
-            - Important on-screen text, when present.
+            For every significant timestamp include ALL available information together:
+
+            Timestamp: <MM:SS>
+
+            Audio:
+            - Spoken dialogue, narration, or other meaningful audio.
+
+            Visual:
+            - Significant actions, scene changes, objects, people, and events visible at that moment.
+
+            On-screen text:
+            - Any captions, titles, labels, graphics, or other readable text.
 
             Requirements:
-            - Merge audio and visual observations into one chronological timeline.
-            - Keep timestamps in ascending order.
-            - Describe only what is directly observable.
-            - Do not infer information that is not shown or spoken.
-            - Finish with a concise summary.
+            - Merge audio, visual observations, and on-screen text into the SAME timestamp entry.
+            - Never create separate transcript and visual-analysis sections.
+            - Keep timestamps in chronological order.
+            - Describe only information directly observable from the video.
+            - Do not infer facts or intentions.
+            - Use concise but informative descriptions.
+            - Finish with a brief summary of the video's main content.
             - Return plain text only.
+
+            Example:
+
+            00:00 
+
+            Audio:
+            The news anchor reports that residents have been advised to drink bottled water.
+
+            Visual:
+            A female news anchor appears in the newsroom.
+
+            On-screen text:
+            "East Palestine Train Derailment"
+
+            00:12
+
+            Audio:
+            The report explains that toxic chemicals were released.
+
+            Visual:
+            Aerial footage shows smoke rising from the derailment.
+
+            On-screen text:
+            "Toxic train fallout"
+
+            Continue this format until the end of the video.
             """
 
         response = await litellm.acompletion(

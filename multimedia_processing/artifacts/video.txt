@@ -1,0 +1,60 @@
+Video: news.mp4
+Media Type: video/mp4
+
+00:00
+
+Audio:
+The governor of the US state of Ohio has warned residents living near the site of a toxic train derailment to drink bottled water as the authorities investigate the environmental fallout. The cargo train crashed 12 days ago in the town of East Palestine, causing a major fire and triggering the release of toxic fumes. Thousands of fish have been found dead in nearby streams, but Governor Mike DeWine says the air has been deemed safe. CBS News correspondent, Jarred Hill, says residents have not been happy with the incident's handling.
+
+Visual:
+A female news anchor in a white blazer reporting from a news studio.
+
+On-screen text:
+BBC
+
+00:10
+
+Audio:
+(No audio)
+
+Visual:
+Aerial footage of a train derailment with heavy black smoke and active fire.
+
+On-screen text:
+BBC
+
+00:23
+
+Audio:
+(No audio)
+
+Visual:
+The female news anchor reappears in the studio.
+
+On-screen text:
+BBC
+
+00:30
+
+Audio:
+The impact is kind of still a big question here. There are a lot of people saying that there are a lot of health issues either that they are having now or that they have heard about now, but again the direct link still is not known right now. Now what the train was carrying were a couple of chemicals but the one of main concern was something called vinyl chloride; it's used to make plastics. This is a known carcinogen and has been linked to a number of cancers. So far, this has not been detected in the homes, but officials say they are continuing to monitor.
+
+Visual:
+A male correspondent wearing glasses, a suit, and a tie speaking from the newsroom.
+
+On-screen text:
+Jarred Hill, Correspondent, CBS News. Toxic train fallout. Hundreds of angry residents in Ohio gathered to demand health assurances.
+
+00:46
+
+Audio:
+(Continuation of narration)
+
+Visual:
+Split screen with the correspondent on the left and the aerial footage of the train derailment on the right.
+
+On-screen text:
+Jarred Hill, Correspondent, CBS News. Toxic train fallout. The governor of Ohio has warned residents to only drink bottled water.
+
+Summary:
+This video reports on the aftermath of a train derailment in East Palestine, Ohio. It discusses the warning for residents to consume bottled water due to environmental contamination, concerns about potential health issues from toxic chemicals like vinyl chloride, and the ongoing investigation and monitoring efforts by officials.
