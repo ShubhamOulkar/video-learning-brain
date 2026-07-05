@@ -1,6 +1,78 @@
-# Self video learning brain
+# Persistent video ingestion pipeline
 
-> NOTE: This project is built from copy of fork https://github.com/topoteretes/cognee
+## Architecture
+
+```
+                    VIDEO INGESTION PIPELINE
+
+┌───────────────────┐
+│   Video (.mp4)    │
+└─────────┬─────────┘
+          │
+          ▼
+┌─────────────────────────────────────┐
+│ GenericAPIAdapter.transcribe_video()│
+│                                     │
+│ • load video                        │
+│ • Base64 encode                     |
+|   (matching infrastructure)         |
+|   (file api for large files)        │
+│ • Send to Vision LLM                │
+└─────────┬───────────────────────────┘
+          │
+          ▼
+┌─────────────────────────────────────┐
+│ Vision LLM (Gemini/OpenAI/Claude)   │
+│                                     │
+│ Produces chronological document     │
+│                                     │
+│ • Audio                             │
+│ • Visual events                     │
+│ • OCR text                          │
+│ • Summary                           │
+└─────────┬───────────────────────────┘
+          │
+          ▼
+┌─────────────────────────────────────┐
+│ Unified Text Representation         │
+│                                     │
+│ Video: meeting.mp4                  │
+│ 00:00 Audio...                      │
+│ 00:00 Visual...                     │
+│ 00:00 OCR...                        │
+│ ...                                 │
+└─────────┬───────────────────────────┘
+          │
+          ▼
+┌─────────────────────────────────────┐
+│ Existing Cognee Pipeline            │
+│                                     │
+│ Chunking                            │
+│ ↓                                   │
+│ Entity Extraction                   │
+│ ↓                                   │
+│ Relationship Discovery              │
+│ ↓                                   │
+│ Knowledge Graph                     │
+└─────────┬───────────────────────────┘
+          │
+          ▼
+┌─────────────────────────────────────┐
+│ Persistent Improving Memory         │
+│                                     │
+│ New videos update the graph         │
+│                                     │
+└─────────┬───────────────────────────┘
+          │
+          ▼
+┌─────────────────────────────────────┐
+│ Natural Language Queries            │
+│                                     │
+│ "What decisions were made?"         │
+│ "What changed this week?"           │
+│ "Who owns this task?"               │
+└─────────────────────────────────────┘
+```
 
 ## Development Setup
 

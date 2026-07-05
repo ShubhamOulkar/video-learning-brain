@@ -1,0 +1,40 @@
+Video: product taxonomy march.mp4
+Media Type: video/mp4
+
+00:00
+
+Audio:
+The speaker discusses the need to simplify a complex taxonomy involving prefixes and suffixes, suggesting that they focus on tracking the percentage of total merge requests that come from the community as a key performance indicator (KPI).
+
+Visual:
+A video conference window with 16 participants' tiles, including one active speaker.
+
+On-screen text:
+"product taxonomy march.mp4"
+
+00:15
+
+Audio:
+The speaker explains the problem of "gaming" the system, where it would be easy to manipulate the data by asking engineers to produce fewer merge requests.
+
+Visual:
+The view remains unchanged with the same participants.
+
+00:41
+
+Audio:
+A participant, identified as Mek Stittri, confirms he is on the call and agrees that they can make the shift to tracking the percentage of community merge requests.
+
+Visual:
+Mek Stittri’s tile becomes active while he speaks.
+
+01:42
+
+Audio:
+The speakers agree on the proposed change and discuss the timeline for implementing the new KPI.
+
+Visual:
+The participants continue the discussion with the video conference grid layout still visible.
+
+Summary:
+The video features a remote team meeting during which the participants discuss and agree to simplify their product taxonomy and adopt a new key performance indicator that tracks the percentage of total merge requests coming from their community.

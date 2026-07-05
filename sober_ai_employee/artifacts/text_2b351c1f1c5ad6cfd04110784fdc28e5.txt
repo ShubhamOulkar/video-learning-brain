@@ -1,0 +1,56 @@
+Video: bug and security may.mp4
+Media Type: video/mp4
+
+00:00
+
+Audio:
+The speaker discusses the potential for a temporary jump in metrics if specific goals aren't met, emphasizing the need to address backlogs effectively.
+
+Visual:
+A screen recording of a video conference call featuring 16 participants on a grid layout. A chart titled "Development Department MR Rate" is partially visible.
+
+On-screen text:
+"clideon.com"
+
+00:17
+
+Audio:
+A speaker mentions the need for prioritizing security work, noting that current security metrics don't adequately reflect this priority or activity, suggesting long-term adjustments are needed.
+
+Visual:
+The video conference screen remains, with focus shifting to another participant.
+
+00:44
+
+Audio:
+A participant asks about the "narrow MR rate," questioning why it is significantly below target and expressing concern about a lack of expected rebound since December.
+
+Visual:
+The video conference screen with the speaker in focus.
+
+01:02
+
+Audio:
+The respondent explains that the dip is due to an unusually high number of vacation days taken in January compared to previous years, and suggests comparing the current period to the same time last year to contextualize the trend.
+
+Visual:
+The video conference screen with the speaker in focus.
+
+01:52
+
+Audio:
+The speaker elaborates on the factors affecting recent metrics, such as a short work month in February with only 16 workdays, and remains optimistic that March will show a rebound similar to the previous year.
+
+Visual:
+The video conference view is replaced by a web page showing "Development Department MR Rate" chart and "Security Department KPIs."
+
+02:31
+
+Audio:
+The speaker explains that time-series targets are being used, where changes to the target are reflected in the chart, and notes that the "diminishing returns" were reached after raising the target to 11.
+
+Visual:
+The screen continues to show the web page, with the speaker explaining the chart's historical data and recent trends.
+
+Summary:
+The video captures a professional meeting where participants discuss development and security metrics. The team analyzes a "Development Department MR Rate" chart, addressing concerns about a decline in productivity due to seasonal factors like increased vacation time and fewer working days. The participants also reflect on the impact of changing target metrics on their data and plan for future performance adjustments.

@@ -1,0 +1,29 @@
+Video: metting introdution february.mp4
+Media Type: video/mp4
+
+00:00
+
+Audio:
+Eric Johnson, the speaker, introduces the meeting and states the date as February 18, 2021. He identifies the session as an engineering key review at GitLab.
+
+Visual:
+A video conference window with nine participants, including the speaker, Eric Johnson.
+
+On-screen text:
+The text under the video screen displays, "Kristie KT Thomas...", "Sid Sijbrandji - CEO", "Tony Righetti - Ive...", "Brian Robins - CFO", "Craig Mestel - VP Fi...", "Lauren Barker - CE...", "Eric Johnson - CTO", "Johnathan Hunt - V...", "Bryan Wise - VP, IT", "Tom Cooney - VP, ...", and "Christopher Lefelh...".
+
+00:12
+
+Audio:
+Eric Johnson introduces the fourth item on the agenda, which is a proposal to break up the current meeting into four department-specific key reviews. He lists the current departments, which are Engineering, Development, Quality, Security, UX, Infrastructure, and Support.
+
+Visual:
+The video conference remains in the same layout, with some participants shifting or joined by other individuals as they enter or exit the video stream.
+
+00:54
+
+Audio:
+Eric Johnson explains his reasoning for this proposed change: to increase visibility, enable deeper dives into key issues, and improve objectivity in how reports are managed within the groups. He intends to spend more time focusing on new markets and shift to a question-asker mode rather than generating and answering content in meetings. He further suggests a two-month rotation of department meetings.
+
+Visual:
+The video conference continues with the participants in the same window layout.
