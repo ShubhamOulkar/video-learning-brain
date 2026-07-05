@@ -48,13 +48,13 @@ async def run_query(title: str, query: str):
         return
 
     for result in results:
-        print(result.text) # type: ignore
+        print(result.text)  # type: ignore
         print()
 
 
 async def main():
     print("Connecting to cognee cloud.....")
-    
+
     await cognee.serve()
 
     print("✅ Connected to cognee cloud")

@@ -12,6 +12,7 @@ OUTPUT_FILE = pathlib.Path(__file__).parent / "evaluation_results.json"
 
 DATASET_NAME = "multimedia_processing"
 
+
 class RetrievalEvaluation(BaseModel):
     score: int = Field(
         ge=0,
@@ -21,9 +22,8 @@ class RetrievalEvaluation(BaseModel):
     passed: bool = Field(
         description="True if the retrieved answer sufficiently answers the question."
     )
-    reasoning: str = Field(
-        description="Brief explanation of why the score was assigned."
-    )
+    reasoning: str = Field(description="Brief explanation of why the score was assigned.")
+
 
 JUDGE_PROMPT = """
     You are evaluating the quality of a retrieval system.
@@ -58,6 +58,7 @@ JUDGE_PROMPT = """
     Return only the structured response.
     """
 
+
 async def evaluate_query(test_case: dict) -> dict:
     """
     Run a single retrieval query and evaluate it with an LLM judge.
@@ -71,7 +72,9 @@ async def evaluate_query(test_case: dict) -> dict:
 
     if results:
         retrieved_answer = "\n".join(
-            result.text for result in results if getattr(result, "text", None) # type: ignore
+            result.text
+            for result in results
+            if getattr(result, "text", None)  # type: ignore
         )
     else:
         retrieved_answer = ""
@@ -112,16 +115,13 @@ async def main():
     results = []
 
     for test_case in test_cases:
-        print(f"Running {test_case['id']}:{test_case["query"]}...")
+        print(f"Running {test_case['id']}:{test_case['query']}...")
 
         result = await evaluate_query(test_case)
 
         results.append(result)
 
-        print(
-            f"Score: {result['score']}/10 | "
-            f"{'PASS' if result['passed'] else 'FAIL'}"
-        )
+        print(f"Score: {result['score']}/10 | {'PASS' if result['passed'] else 'FAIL'}")
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)

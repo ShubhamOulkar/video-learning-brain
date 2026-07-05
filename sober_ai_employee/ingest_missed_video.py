@@ -10,7 +10,7 @@ from cognee.shared.logging_utils import ERROR, setup_logging
 
 async def main():
     print("Connecting to cognee cloud.....")
-    
+
     await cognee.serve()
 
     print("✅ Connected to cognee cloud")

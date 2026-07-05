@@ -14,12 +14,13 @@ headers = {
     "Content-Type": "application/json",
 }
 
+
 async def main():
     # cognee cloud can not load data return from LLM provider, it only passes path strings to cloud.
     # see cognee-cloud-bug.png
     # await cognee.serve(url="http://localhost:8000", api_key="9fde6c6f68487f568cce2b5b71dab7d698a8dfeff50002983ee0268d3a7ca977")
     # tested with local server, verify bug folder
-    
+
     await cognee.prune.prune_data()
     await cognee.prune.prune_system(metadata=True)
     await cognee.forget(everything=True)
