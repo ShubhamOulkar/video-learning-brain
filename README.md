@@ -8,6 +8,8 @@ Demo:
 
 [Watch Sober AI Employee Demo](https://www.youtube.com/watch?v=iI3C5pXqNf8)
 
+[Blog post](https://shubhudevblogs.hashnode.dev/extending-cognee-with-native-video-understanding-for-persistent-ai-memory)
+
 ## Architecture
 
 ```text
@@ -163,7 +165,7 @@ Knowledge Graph + Retrieval
 
 This would allow scalable retrieval over large video collections while continuing to leverage Cognee's persistent memory and knowledge graph infrastructure.
 
----
+![](./pipeline.png)
 
 ## Development Setup
 
